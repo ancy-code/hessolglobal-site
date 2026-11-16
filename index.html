@@ -145,8 +145,9 @@
   .hero-foot{margin-top:clamp(40px,5vw,64px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(2,1fr)}
   .hero-foot div{padding:17px 0 21px 22px;border-left:1px solid var(--line-soft)}
   .hero-foot div:first-child{padding-left:0;border-left:0}
-  .hero-foot .k{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--wood);margin-bottom:6px}
-  .hero-foot .v{font-family:var(--serif);font-size:15px;letter-spacing:.02em;color:var(--ink)}
+  .hero-foot .k{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--walnut);margin-bottom:8px}
+  .hero-foot .v{font-family:var(--serif);font-size:22px;font-weight:400;line-height:1.25;letter-spacing:.012em;color:#2C2420}
+  html[lang="ko"] .hero-foot .v{font-size:21px;font-weight:400;letter-spacing:-.005em}
 
   /* ---------- sections ---------- */
   section{scroll-margin-top:92px}
@@ -242,8 +243,10 @@
   }
   @media (max-width:760px){
     .hero-foot{grid-template-columns:1fr}
-    .hero-foot div{padding:14px 0;border-left:0;border-top:1px solid var(--line-soft)}
+    .hero-foot div{padding:16px 0;border-left:0;border-top:1px solid var(--line-soft)}
     .hero-foot div:first-child{border-top:0}
+    .hero-foot .v{font-size:18px}
+    html[lang="ko"] .hero-foot .v{font-size:17.5px}
     .f-row{grid-template-columns:1fr}
     .co-meta .r{grid-template-columns:1fr;gap:4px}
     .contact-address{grid-template-columns:1fr;gap:8px}
@@ -306,7 +309,7 @@
         </div>
         <div>
           <div class="k" data-en="Focus" data-kr="분야">Focus</div>
-          <div class="v" data-en="International Trading" data-kr="국제 무역">International Trading</div>
+          <div class="v" data-en="Brand Operations" data-kr="브랜드 운영">Brand Operations</div>
         </div>
       </div>
     </div>
@@ -373,7 +376,7 @@
           </div>
           <div class="r">
             <div class="k" data-en="Focus" data-kr="분야">Focus</div>
-            <div class="v" data-en="International Trading" data-kr="국제 무역">International Trading</div>
+            <div class="v" data-en="Brand Operations" data-kr="브랜드 운영">Brand Operations</div>
           </div>
         </div>
       </div>
