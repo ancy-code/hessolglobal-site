@@ -148,6 +148,8 @@
   .hero-foot .k{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--walnut);margin-bottom:8px}
   .hero-foot .v{font-family:var(--serif);font-size:22px;font-weight:400;line-height:1.25;letter-spacing:.012em;color:#2C2420}
   html[lang="ko"] .hero-foot .v{font-size:21px;font-weight:400;letter-spacing:-.005em}
+  /* second focus line — same weight, sits a touch quieter so the two read as one block */
+  .hero-foot .v .v2{display:block;margin-top:.18em;color:var(--ink)}
   /* tablet band: give the FOCUS column room so the longer value stays on one line */
   @media (min-width:761px) and (max-width:900px){
     .hero-foot{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr)}
@@ -313,7 +315,7 @@
         </div>
         <div>
           <div class="k" data-en="Focus" data-kr="분야">Focus</div>
-          <div class="v" data-en="Brand Operations · Retail Channel Entry" data-kr="브랜드 운영 · 유통채널 입점 전문">Brand Operations · Retail Channel Entry</div>
+          <div class="v" data-en="Brand Operations · Retail Channel Entry<span class='v2'>B&amp;B Distribution &amp; Import &amp; Export</span>" data-kr="브랜드 운영 · 유통채널 입점 전문<span class='v2'>B&amp;B 유통 · 수입 · 수출</span>">Brand Operations · Retail Channel Entry<span class="v2">B&amp;B Distribution &amp; Import &amp; Export</span></div>
         </div>
       </div>
     </div>
@@ -380,7 +382,7 @@
           </div>
           <div class="r">
             <div class="k" data-en="Focus" data-kr="분야">Focus</div>
-            <div class="v" data-en="Brand Operations · Retail Channel Entry" data-kr="브랜드 운영 · 유통채널 입점 전문">Brand Operations · Retail Channel Entry</div>
+            <div class="v" data-en="Brand Operations · Retail Channel Entry<br>B&amp;B Distribution &amp; Import &amp; Export" data-kr="브랜드 운영 · 유통채널 입점 전문<br>B&amp;B 유통 · 수입 · 수출">Brand Operations · Retail Channel Entry<br>B&amp;B Distribution &amp; Import &amp; Export</div>
           </div>
         </div>
       </div>
