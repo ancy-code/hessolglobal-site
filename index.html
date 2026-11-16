@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HESSOL GLOBAL — We Challenge. A quiet light, connecting the world.</title>
+<meta name="description" content="HESSOL GLOBAL is a Seoul-based global firm built on bold curiosity — bridging ideas, partners and new possibilities across borders.">
+<meta name="theme-color" content="#FAF7F2">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HESSOL GLOBAL">
+<meta property="og:title" content="HESSOL GLOBAL — We Challenge. A quiet light, connecting the world.">
+<meta property="og:description" content="A Seoul-based global firm built on bold curiosity — bridging ideas, partners and new possibilities across borders.">
+<meta property="og:url" content="https://hessolglobal.com">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%237A6155'/%3E%3Cpath d='M11 9v14M21 9v14M11 16h10' fill='none' stroke='%23F4EFE8' stroke-width='2.2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Serif+KR:wght@200;300;400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF7F2;
+    --cream-2:#F4EFE8;
+    --paper:#FFFDFA;
+    --walnut:#7A6155;
+    --wood:#B8A899;
+    --toffee:#C8A98E;
+    --ink:#2C2420;
+    --sub:#6B5B52;
+    --line:rgba(122,97,85,.18);
+    --line-soft:rgba(122,97,85,.11);
+    --serif:'Cormorant Garamond','Noto Serif KR',Georgia,'Times New Roman',serif;
+    --sans:'Plus Jakarta Sans',Pretendard,-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Noto Sans KR','Malgun Gothic',sans-serif;
+    --max:1240px;
+    --pad:clamp(20px,5vw,72px);
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--cream);color:var(--ink);
+    font-family:var(--sans);font-size:16px;line-height:1.68;font-weight:300;
+    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:
+      radial-gradient(120% 80% at 78% -10%,rgba(200,169,142,.13),transparent 60%),
+      radial-gradient(90% 60% at -10% 105%,rgba(184,168,153,.14),transparent 62%);
+  }
+  img,svg{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+  ::selection{background:var(--toffee);color:var(--ink)}
+
+  .wrap{width:100%;max-width:var(--max);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad);position:relative;z-index:1}
+
+  /* ---------- type ---------- */
+  .label{
+    display:inline-flex;align-items:center;gap:12px;
+    font-family:var(--sans);font-size:10.5px;font-weight:400;
+    letter-spacing:.26em;text-transform:uppercase;color:var(--sub);
+  }
+  .label::before{content:"";width:26px;height:1px;background:var(--wood);display:block}
+  h1,h2,h3{margin:0;font-family:var(--serif);font-weight:300;letter-spacing:-.012em}
+  h1{font-size:clamp(40px,5.8vw,82px);line-height:1.02}
+  h2{font-size:clamp(27px,3.3vw,46px);line-height:1.12}
+  html[lang="ko"] h1{font-size:clamp(31px,4.2vw,60px);line-height:1.24;letter-spacing:-.022em}
+  html[lang="ko"] h2{font-size:clamp(23px,2.8vw,39px);line-height:1.3;letter-spacing:-.024em}
+  html[lang="ko"] h3{letter-spacing:-.02em}
+  html[lang="ko"] em{font-style:normal}
+  html[lang="ko"] .label,html[lang="ko"] .contact-address .k,html[lang="ko"] .f label,
+  html[lang="ko"] .hero-foot .k,html[lang="ko"] .co-meta .k,
+  html[lang="ko"] .approach .num{letter-spacing:.1em}
+  html[lang="ko"] .nav-links a{letter-spacing:.1em}
+  html[lang="ko"] .lede,html[lang="ko"] p,html[lang="ko"] h1,html[lang="ko"] h2,html[lang="ko"] h3{word-break:keep-all}
+  h3{font-size:clamp(20px,1.9vw,26px);line-height:1.22}
+  em{font-style:italic;font-weight:300;color:var(--walnut)}
+  p{margin:0}
+  .lede{font-size:clamp(15px,1.1vw,16.5px);line-height:1.82;color:var(--sub);font-weight:300}
+
+  /* ---------- brand ---------- */
+  .brand{display:inline-flex;flex-direction:column;gap:.38em;line-height:1;color:var(--ink)}
+  .brand .bl{font-family:var(--sans);font-weight:400;letter-spacing:.44em;margin-right:-.44em;white-space:nowrap}
+  .brand--nav .bl{font-size:12px}
+  .brand--foot .bl{font-size:11px}
+
+  /* ---------- nav ---------- */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .5s var(--ease),border-color .5s var(--ease)}
+  .nav::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line);opacity:0;transition:opacity .5s var(--ease)}
+  .nav.solid{background:rgba(250,247,242,.9);backdrop-filter:blur(14px) saturate(1.1);-webkit-backdrop-filter:blur(14px) saturate(1.1)}
+  .nav.solid::after{opacity:1}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
+  .nav-links{display:flex;align-items:center;gap:clamp(20px,2.6vw,38px)}
+  .nav-links a{
+    position:relative;font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--sub);padding:4px 0;transition:color .35s var(--ease);
+  }
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+  .nav-links a:hover,.nav-links a.active{color:var(--ink)}
+  .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+  .nav-right{display:flex;align-items:center;gap:clamp(16px,2.2vw,30px)}
+  .lang{display:flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.18em}
+  .lang button{padding:2px 0;color:var(--wood);transition:color .3s var(--ease);position:relative}
+  .lang button.on{color:var(--ink)}
+  .lang button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--ink)}
+  .lang span{color:rgba(122,97,85,.4)}
+  .burger{display:none;width:34px;height:34px;position:relative;z-index:75}
+  .burger i{position:absolute;left:6px;right:6px;height:1px;background:var(--ink);transition:transform .4s var(--ease),opacity .3s}
+  .burger i:nth-child(1){top:14px}
+  .burger i:nth-child(2){top:20px}
+  body.menu-open .burger i:nth-child(1){transform:translateY(3px) rotate(45deg)}
+  body.menu-open .burger i:nth-child(2){transform:translateY(-3px) rotate(-45deg)}
+
+  .drawer{
+    position:fixed;inset:0;z-index:55;background:var(--cream);
+    display:flex;flex-direction:column;justify-content:center;
+    padding:110px var(--pad) 60px;
+    opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility .45s;
+  }
+  body.menu-open .drawer{opacity:1;visibility:visible}
+  body.menu-open{overflow:hidden}
+  .drawer a{font-family:var(--serif);font-size:clamp(30px,9vw,44px);line-height:1.5;color:var(--ink);border-top:1px solid var(--line-soft)}
+  .drawer a:last-of-type{border-bottom:1px solid var(--line-soft)}
+  .drawer .dlang{margin-top:36px;display:flex;gap:10px;font-size:12px;letter-spacing:.2em;color:var(--wood)}
+  .drawer .dlang button.on{color:var(--ink)}
+
+  /* ---------- hero ---------- */
+  main{position:relative;z-index:1}
+  .hero{padding:clamp(104px,13vh,150px) 0 0}
+  .hero-body{max-width:1080px}
+  .hero .label{margin-bottom:clamp(24px,3vw,36px)}
+  .hero .lede{margin-top:clamp(24px,2.8vw,34px);max-width:58ch}
+  .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:clamp(18px,2.6vw,32px);margin-top:clamp(28px,3.6vw,44px)}
+  .btn{
+    display:inline-flex;align-items:center;gap:14px;
+    font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;font-weight:400;
+    padding:16px 26px;background:var(--ink);color:var(--cream);
+    transition:background .4s var(--ease),transform .4s var(--ease);
+  }
+  .btn:hover{background:var(--walnut)}
+  .btn .ar{transition:transform .4s var(--ease)}
+  .btn:hover .ar{transform:translateX(4px)}
+
+  .hero-foot{margin-top:clamp(40px,5vw,64px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(2,1fr)}
+  .hero-foot div{padding:17px 0 21px 22px;border-left:1px solid var(--line-soft)}
+  .hero-foot div:first-child{padding-left:0;border-left:0}
+  .hero-foot .k{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--wood);margin-bottom:6px}
+  .hero-foot .v{font-family:var(--serif);font-size:15px;letter-spacing:.02em;color:var(--ink)}
+
+  /* ---------- sections ---------- */
+  section{scroll-margin-top:92px}
+  .sec{padding:clamp(58px,7.6vw,104px) 0}
+  .sec-head{display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(18px,4vw,56px);align-items:start}
+  .sec-head .label{padding-top:8px}
+  .sec-head h2{max-width:22ch}
+  .sec-head .lede{margin-top:18px;max-width:52ch}
+
+  /* approach */
+  .approach{border-top:1px solid var(--line-soft)}
+  .pillars{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:clamp(40px,5vw,60px);border-top:1px solid var(--line)}
+  .pillar{padding:clamp(24px,2.8vw,36px) clamp(20px,2.6vw,36px) 0;border-left:1px solid var(--line-soft)}
+  .pillar:first-child{padding-left:0;border-left:0}
+  .pillar .num{font-family:var(--serif);font-size:12px;letter-spacing:.28em;color:var(--wood);margin-bottom:14px}
+  .pillar h3{font-size:clamp(21px,2vw,27px)}
+  .pillar .ko{margin-top:7px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--wood)}
+  .pillar p{margin-top:14px;font-size:13.5px;line-height:1.82;color:var(--sub)}
+
+  /* company */
+  .company{background:var(--cream-2);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+  .co-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(30px,5.5vw,80px);margin-top:clamp(28px,3.4vw,42px)}
+  .co-text p + p{margin-top:16px}
+  .co-meta{border-top:1px solid var(--line);align-self:start}
+  .co-meta .r{display:grid;grid-template-columns:104px minmax(0,1fr);gap:16px;padding:13px 0;border-bottom:1px solid var(--line-soft)}
+  .co-meta .k{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--wood);padding-top:4px}
+  .co-meta .v{font-size:13.5px;line-height:1.6;color:var(--ink)}
+  .co-meta a.v{border-bottom:1px solid transparent;transition:border-color .35s}
+  .co-meta a.v:hover{border-color:var(--walnut)}
+
+  /* contact */
+  .contact-body{max-width:840px;margin:clamp(34px,4.4vw,54px) 0 0 calc(200px + clamp(18px,4vw,56px))}
+
+  form{border-top:1px solid var(--line);padding-top:clamp(26px,3.2vw,38px)}
+  .f-row{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(24px,3.4vw,48px)}
+  .f{margin-bottom:clamp(22px,2.6vw,32px)}
+  .f label{display:block;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--wood);margin-bottom:11px}
+  .f input,.f textarea{
+    width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);
+    border-radius:0;padding:11px 0 15px;font-family:var(--sans);font-size:clamp(15px,1.1vw,16.5px);font-weight:300;color:var(--ink);
+    line-height:1.5;transition:border-color .4s var(--ease);
+  }
+  .f textarea{resize:vertical;min-height:clamp(160px,15vw,210px);line-height:1.85;padding-top:14px}
+  .f input:focus,.f textarea:focus{outline:none;border-color:var(--walnut)}
+  .f input::placeholder,.f textarea::placeholder{color:rgba(107,91,82,.42)}
+  .form-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;margin-top:clamp(12px,1.6vw,22px)}
+  .form-note{font-size:12.5px;color:var(--sub);line-height:1.65;max-width:40ch}
+
+  .contact-address{
+    display:grid;grid-template-columns:clamp(96px,13vw,150px) minmax(0,1fr);
+    gap:clamp(16px,2.6vw,30px);align-items:start;
+    margin-top:clamp(32px,4vw,48px);padding-top:clamp(22px,2.8vw,32px);border-top:1px solid var(--line);
+  }
+  .contact-address .k{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--wood);padding-top:8px}
+  .contact-address .v{font-family:var(--serif);font-size:clamp(17px,1.5vw,21px);line-height:1.65;letter-spacing:.005em;color:var(--ink)}
+  .form-status{margin-top:14px;font-size:12px;color:var(--walnut);min-height:18px}
+  .form-status[data-msg="error"]{color:#a1543f}
+  .form-foot .btn[disabled]{opacity:.5;pointer-events:none}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:clamp(32px,4.2vw,48px) 0 38px}
+  .foot-in{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px}
+  .foot-in .copy{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--wood);line-height:1.9}
+  .foot-links{display:flex;gap:22px}
+  .foot-links a{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--sub);transition:color .3s}
+  .foot-links a:hover{color:var(--ink)}
+
+  /* reveal */
+  .js [data-reveal]{opacity:0;transform:translateY(16px)}
+  .js [data-reveal].in{opacity:1;transform:none;transition:opacity 1s var(--ease),transform 1s var(--ease)}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .js [data-reveal]{opacity:1!important;transform:none!important}
+    *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1024px){
+    .sec-head{grid-template-columns:1fr;gap:16px}
+    .sec-head .label{padding-top:0}
+    .co-grid{grid-template-columns:1fr;gap:30px}
+    .contact-body{max-width:100%;margin-left:0}
+    .pillars{grid-template-columns:1fr}
+    .pillar{padding:24px 0 0;border-left:0;border-top:1px solid var(--line-soft)}
+    .pillar:first-child{border-top:0;padding-top:0}
+  }
+  @media (max-width:900px){
+    .nav-links{display:none}
+    .nav-right .lang{display:none}
+    .burger{display:block}
+    .nav-in{height:66px}
+    .hero{padding-top:104px}
+  }
+  @media (max-width:760px){
+    .hero-foot{grid-template-columns:1fr}
+    .hero-foot div{padding:14px 0;border-left:0;border-top:1px solid var(--line-soft)}
+    .hero-foot div:first-child{border-top:0}
+    .f-row{grid-template-columns:1fr}
+    .co-meta .r{grid-template-columns:1fr;gap:4px}
+    .contact-address{grid-template-columns:1fr;gap:8px}
+    .contact-address .k{padding-top:0}
+    .foot-in{align-items:flex-start;flex-direction:column}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand brand--nav" href="#top" aria-label="HESSOL GLOBAL">
+      <span class="bl">HESSOL</span>
+      <span class="bl">GLOBAL</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#vision" data-en="Vision" data-kr="비전">Vision</a>
+      <a href="#company" data-en="Company" data-kr="회사">Company</a>
+      <a href="#contact" data-en="Contact" data-kr="문의">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" class="on" aria-pressed="true">EN</button>
+        <span>/</span>
+        <button type="button" data-lang="kr" aria-pressed="false">KR</button>
+      </div>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <a href="#vision" data-en="Vision" data-kr="비전">Vision</a>
+  <a href="#company" data-en="Company" data-kr="회사">Company</a>
+  <a href="#contact" data-en="Contact" data-kr="문의">Contact</a>
+  <div class="dlang" role="group" aria-label="Language">
+    <button type="button" data-lang="en" class="on">EN</button><span>/</span><button type="button" data-lang="kr">KR</button>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-body">
+        <span class="label" data-reveal data-en="HESSOL GLOBAL — Seoul, Korea" data-kr="헤솔 글로벌 — 서울">HESSOL GLOBAL — Seoul, Korea</span>
+        <h1 data-reveal data-en="We challenge.<br><em>A quiet light, connecting the world.</em>" data-kr="우리는 도전합니다.<br><em>작은 빛이 되어, 세상을 잇습니다.</em>">We challenge.<br><em>A quiet light, connecting the world.</em></h1>
+        <p class="lede" data-reveal data-en="HESSOL GLOBAL is a Seoul-based global firm built on bold curiosity — bridging ideas, partners, and new possibilities across borders." data-kr="HESSOL GLOBAL은 서울을 기반으로 경계 없는 가능성을 탐구하며, 사람과 시장, 아이디어를 잇는 글로벌 기업입니다.">HESSOL GLOBAL is a Seoul-based global firm built on bold curiosity — bridging ideas, partners, and new possibilities across borders.</p>
+        <div class="cta-row" data-reveal>
+          <a class="btn" href="#contact"><span data-en="Contact us" data-kr="문의하기">Contact us</span><span class="ar">→</span></a>
+        </div>
+      </div>
+
+      <div class="hero-foot" data-reveal>
+        <div>
+          <div class="k" data-en="Based in" data-kr="기반">Based in</div>
+          <div class="v" data-en="Seoul, South Korea" data-kr="서울, 대한민국">Seoul, South Korea</div>
+        </div>
+        <div>
+          <div class="k" data-en="Focus" data-kr="분야">Focus</div>
+          <div class="v" data-en="International Trading" data-kr="국제 무역">International Trading</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section class="sec approach" id="vision">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label" data-reveal data-en="01 — Vision" data-kr="01 — 비전">01 — Vision</span>
+        <div>
+          <h2 data-reveal data-en="Why we challenge." data-kr="우리는 왜 도전하는가.">Why we challenge.</h2>
+          <p class="lede" data-reveal data-en="Every possibility begins with someone willing to go first. Three attitudes shape how we work — no borders in our search, directness in every relationship, and no hesitation when an opening appears." data-kr="모든 가능성은 먼저 가 보려는 사람에서 시작됩니다. 우리가 일하는 방식은 세 가지 태도로 정리됩니다. 경계 없는 탐색, 관계의 직선, 기회 앞에서의 망설임 없음.">Every possibility begins with someone willing to go first. Three attitudes shape how we work — no borders in our search, directness in every relationship, and no hesitation when an opening appears.</p>
+        </div>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar" data-reveal>
+          <div class="num">01</div>
+          <h3 data-en="Explore" data-kr="경계 없는 탐색">Explore</h3>
+          <div class="ko" data-en="Beyond borders" data-kr="국경 너머">Beyond borders</div>
+          <p data-en="We look where the map ends — ideas, people and places the world has not connected yet. Nothing is fixed at the start; curiosity sets the direction." data-kr="지도의 끝까지 봅니다. 세상이 아직 잇지 못한 아이디어와 사람, 장소를 직접 찾습니다. 처음부터 정해 둔 것은 없고, 호기심이 방향을 정합니다.">We look where the map ends — ideas, people and places the world has not connected yet. Nothing is fixed at the start; curiosity sets the direction.</p>
+        </div>
+        <div class="pillar" data-reveal>
+          <div class="num">02</div>
+          <h3 data-en="Connect" data-kr="세상과 세상">Connect</h3>
+          <div class="ko" data-en="World to world" data-kr="경계를 건너">World to world</div>
+          <p data-en="We stand where two worlds meet — a direct line, not another layer. One conversation carries an idea from the first question to a partnership that lasts." data-kr="두 세계가 만나는 자리에 섭니다. 층이 아니라 통로로. 하나의 대화가 첫 질문에서 오래가는 파트너십까지 이어집니다.">We stand where two worlds meet — a direct line, not another layer. One conversation carries an idea from the first question to a partnership that lasts.</p>
+        </div>
+        <div class="pillar" data-reveal>
+          <div class="num">03</div>
+          <h3 data-en="Challenge" data-kr="과감한 실행">Challenge</h3>
+          <div class="ko" data-en="Act with nerve" data-kr="망설임 없이">Act with nerve</div>
+          <p data-en="When an opening appears, we move — small enough to decide fast, serious enough to follow a new idea all the way through." data-kr="기회가 보이면 바로 움직입니다. 결정이 빠른 작은 팀이지만, 새로운 시도는 끝까지 책임집니다.">When an opening appears, we move — small enough to decide fast, serious enough to follow a new idea all the way through.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPANY -->
+  <section class="sec company" id="company">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label" data-reveal data-en="02 — Company" data-kr="02 — 회사">02 — Company</span>
+        <div>
+          <h2 data-reveal data-en="Built for enduring<br>global partnerships." data-kr="지속 가능한 글로벌<br>파트너십을 지향합니다.">Built for enduring<br>global partnerships.</h2>
+        </div>
+      </div>
+
+      <div class="co-grid">
+        <div class="co-text">
+          <p class="lede" data-reveal data-en="HESSOL GLOBAL is a global firm based in Seoul. We work across borders with people and partners who share our curiosity, and we keep the path between an idea and its reality short and direct." data-kr="HESSOL GLOBAL은 서울에 기반을 둔 글로벌 기업입니다. 같은 호기심을 가진 사람과 파트너를 국경 너머에서 만나고, 아이디어와 현실 사이의 길을 짧고 곧게 유지합니다.">HESSOL GLOBAL is a global firm based in Seoul. We work across borders with people and partners who share our curiosity, and we keep the path between an idea and its reality short and direct.</p>
+          <p class="lede" data-reveal data-en="What we take on stays open. What comes next is decided by the idea and the people behind it — not by a plan written before we met." data-kr="무엇을 할지는 열려 있습니다. 다음은 아이디어와 그 뒤의 사람이 결정합니다. 만나기 전에 써 둔 계획이 아니라.">What we take on stays open. What comes next is decided by the idea and the people behind it — not by a plan written before we met.</p>
+        </div>
+
+        <div class="co-meta" data-reveal>
+          <div class="r">
+            <div class="k" data-en="Company" data-kr="상호">Company</div>
+            <div class="v" data-en="HESSOL GLOBAL" data-kr="헤솔 글로벌 (HESSOL GLOBAL)">HESSOL GLOBAL</div>
+          </div>
+          <div class="r">
+            <div class="k" data-en="Based in" data-kr="소재">Based in</div>
+            <div class="v" data-en="Seoul, South Korea" data-kr="서울, 대한민국">Seoul, South Korea</div>
+          </div>
+          <div class="r">
+            <div class="k" data-en="Focus" data-kr="분야">Focus</div>
+            <div class="v" data-en="International Trading" data-kr="국제 무역">International Trading</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="sec" id="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label" data-reveal data-en="03 — Contact" data-kr="03 — 문의">03 — Contact</span>
+        <div>
+          <h2 data-reveal data-en="Let's build something." data-kr="함께 시작해요.">Let's build something.</h2>
+        </div>
+      </div>
+
+      <div class="contact-body">
+        <div data-reveal>
+          <form id="inquiry" novalidate>
+            <div class="f-row">
+              <div class="f">
+                <label for="f-name" data-en="Name" data-kr="이름">Name</label>
+                <input id="f-name" name="name" type="text" autocomplete="name" data-en-ph="Your name" data-kr-ph="성함">
+              </div>
+              <div class="f">
+                <label for="f-company" data-en="Company" data-kr="회사">Company</label>
+                <input id="f-company" name="company" type="text" autocomplete="organization" data-en-ph="Company / brand" data-kr-ph="회사 · 브랜드">
+              </div>
+            </div>
+            <div class="f-row">
+              <div class="f">
+                <label for="f-title" data-en="Title / Position" data-kr="직급">Title / Position</label>
+                <input id="f-title" name="title" type="text" autocomplete="organization-title" data-en-ph="Your title / position" data-kr-ph="직급 / 직책">
+              </div>
+              <div class="f">
+                <label for="f-phone" data-en="Phone" data-kr="연락처">Phone</label>
+                <input id="f-phone" name="phone" type="tel" autocomplete="tel" data-en-ph="+82 10-0000-0000" data-kr-ph="연락처 (전화번호)">
+              </div>
+            </div>
+            <div class="f-row">
+              <div class="f">
+                <label for="f-email" data-en="Email" data-kr="이메일">Email</label>
+                <input id="f-email" name="email" type="email" autocomplete="email" required aria-required="true" data-en-ph="you@company.com" data-kr-ph="you@company.com">
+              </div>
+              <div class="f">
+                <label for="f-country" data-en="Country" data-kr="국가">Country</label>
+                <input id="f-country" name="country" type="text" autocomplete="country-name" data-en-ph="Country" data-kr-ph="국가">
+              </div>
+            </div>
+            <div class="f">
+              <label for="f-message" data-en="Message" data-kr="문의 내용">Message</label>
+              <textarea id="f-message" name="message" rows="3" data-en-ph="Please share your inquiry." data-kr-ph="문의하실 내용을 자유롭게 적어 주세요."></textarea>
+            </div>
+            <div class="form-foot">
+              <p class="form-note" data-en="Your message will be delivered directly to our team." data-kr="작성하신 내용은 메일 앱 없이 바로 담당자에게 전달됩니다.">Your message will be delivered directly to our team.</p>
+              <button class="btn" type="submit"><span data-en="Send inquiry" data-kr="문의 보내기">Send inquiry</span><span class="ar">→</span></button>
+            </div>
+            <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <div class="contact-address" data-reveal>
+          <div class="k" data-en="Address" data-kr="주소">Address</div>
+          <div class="v" data-en="6F - Ga-49, 5 Dangsan-ro 28-gil, Yeongdeungpo-gu, Seoul, South Korea" data-kr="서울특별시 영등포구 당산로28길 5, 6층 - 가49호">6F - Ga-49, 5 Dangsan-ro 28-gil, Yeongdeungpo-gu, Seoul, South Korea</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-in">
+    <a class="brand brand--foot" href="#top" aria-label="HESSOL GLOBAL">
+      <span class="bl">HESSOL</span>
+      <span class="bl">GLOBAL</span>
+    </a>
+    <div class="foot-links">
+      <a href="#vision" data-en="Vision" data-kr="비전">Vision</a>
+      <a href="#contact" data-en="Contact" data-kr="문의">Contact</a>
+    </div>
+    <div class="copy">
+      © HESSOL GLOBAL. <span data-en="All rights reserved." data-kr="모든 권리 보유.">All rights reserved.</span><br>
+      <span data-en="Seoul, Republic of Korea" data-kr="서울, 대한민국">Seoul, Republic of Korea</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var D = document;
+
+  /* ---- language ---- */
+  var lang = 'en';
+  var MSG = {
+    sending: { en: 'Sending...', kr: '전송 중...' },
+    sent:    { en: 'Thank you. Your inquiry has been sent.', kr: '문의가 정상적으로 접수되었습니다.' },
+    error:   { en: 'Your message could not be sent. Please write to hessol@hessolglobal.com directly.', kr: '전송에 실패했습니다. hessol@hessolglobal.com으로 직접 문의해 주세요.' },
+    need:    { en: 'Please share your inquiry.', kr: '문의하실 내용을 적어 주세요.' },
+    invalid: { en: 'Please enter a valid email and your inquiry.', kr: '이메일과 문의 내용을 입력해 주세요.' }
+  };
+  function apply(l){
+    lang = l;
+    D.documentElement.lang = (l === 'kr') ? 'ko' : 'en';
+    D.title = (l === 'kr')
+      ? 'HESSOL GLOBAL — 우리는 도전합니다. 작은 빛이 되어, 세상을 잇습니다. | 서울'
+      : 'HESSOL GLOBAL — We Challenge. A quiet light, connecting the world.';
+    D.querySelectorAll('[data-en]').forEach(function(el){
+      var v = el.getAttribute('data-' + l);
+      if (v !== null) el.innerHTML = v;
+    });
+    D.querySelectorAll('[data-en-ph]').forEach(function(el){
+      var p = el.getAttribute('data-' + l + '-ph');
+      if (p !== null) el.setAttribute('placeholder', p);
+    });
+    D.querySelectorAll('[data-lang]').forEach(function(b){
+      var on = b.getAttribute('data-lang') === l;
+      b.classList.toggle('on', on);
+      if (b.hasAttribute('aria-pressed')) b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    var stx = D.getElementById('form-status');
+    if (stx && MSG[stx.getAttribute('data-msg')]) stx.textContent = MSG[stx.getAttribute('data-msg')][l];
+    try { localStorage.setItem('hg-lang', l); } catch(e){}
+  }
+  D.querySelectorAll('[data-lang]').forEach(function(b){
+    b.addEventListener('click', function(){ apply(b.getAttribute('data-lang')); });
+  });
+  try { var saved = localStorage.getItem('hg-lang'); apply(saved === 'kr' ? 'kr' : 'en'); } catch(e){ apply(lang); }
+
+  /* ---- nav on scroll + spy ---- */
+  var nav = D.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('solid', window.scrollY > 24); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  var secs = ['vision','company','contact'].map(function(id){ return D.getElementById(id); }).filter(Boolean);
+  var links = Array.prototype.slice.call(D.querySelectorAll('.nav-links a'));
+  if ('IntersectionObserver' in window){
+    var spy = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (!e.isIntersecting) return;
+        links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    secs.forEach(function(s){ spy.observe(s); });
+  }
+
+  /* ---- mobile drawer ---- */
+  var burger = D.getElementById('burger'), drawer = D.getElementById('drawer');
+  function closeMenu(){ D.body.classList.remove('menu-open'); burger.setAttribute('aria-expanded','false'); }
+  burger.addEventListener('click', function(){
+    var open = D.body.classList.toggle('menu-open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  drawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeMenu); });
+  D.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeMenu(); });
+
+  /* ---- reveal ---- */
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+    D.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+  } else {
+    D.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---- inquiry form ---- */
+  var f = D.getElementById('inquiry'), st = D.getElementById('form-status');
+  if (f && st){
+    var sendBtn = f.querySelector('button[type="submit"]');
+    var setStatus = function(key){
+      st.setAttribute('data-msg', key);
+      st.textContent = MSG[key][lang];
+    };
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      var v = function(n){ var el = f.elements[n]; return el ? el.value.trim() : ''; };
+      var name = v('name'), email = v('email'), message = v('message'), company = v('company');
+      var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+      if (!message){ setStatus('need'); f.elements.message.focus(); return; }
+      if (!emailOk){ setStatus('invalid'); f.elements.email.focus(); return; }
+      var subject = (lang === 'kr' ? '[HESSOL GLOBAL] 문의 — ' : '[HESSOL GLOBAL] Inquiry — ') +
+                    (company || name || (lang === 'kr' ? '홈페이지' : 'Website'));
+      setStatus('sending');
+      if (sendBtn) sendBtn.disabled = true;
+      fetch('https://formsubmit.co/ajax/ancy@hessolglobal.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          company: company,
+          title: v('title'),
+          phone: v('phone'),
+          email: email,
+          country: v('country'),
+          message: message,
+          _subject: subject,
+          _template: 'table',
+          _captcha: 'false'
+        })
+      }).then(function(res){
+        return res.json().catch(function(){ return {}; }).then(function(data){
+          if (!res.ok || !(data.success === 'true' || data.success === true)) throw new Error('send_failed');
+        });
+      }).then(function(){
+        setStatus('sent');
+        f.reset();
+      }).catch(function(){
+        setStatus('error');
+      }).then(function(){
+        if (sendBtn) sendBtn.disabled = false;
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
