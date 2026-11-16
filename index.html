@@ -148,6 +148,10 @@
   .hero-foot .k{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--walnut);margin-bottom:8px}
   .hero-foot .v{font-family:var(--serif);font-size:22px;font-weight:400;line-height:1.25;letter-spacing:.012em;color:#2C2420}
   html[lang="ko"] .hero-foot .v{font-size:21px;font-weight:400;letter-spacing:-.005em}
+  /* tablet band: give the FOCUS column room so the longer value stays on one line */
+  @media (min-width:761px) and (max-width:900px){
+    .hero-foot{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr)}
+  }
 
   /* ---------- sections ---------- */
   section{scroll-margin-top:92px}
@@ -309,7 +313,7 @@
         </div>
         <div>
           <div class="k" data-en="Focus" data-kr="분야">Focus</div>
-          <div class="v" data-en="Brand Operations" data-kr="브랜드 운영">Brand Operations</div>
+          <div class="v" data-en="Brand Operations · Retail Channel Entry" data-kr="브랜드 운영 · 유통채널 입점 전문">Brand Operations · Retail Channel Entry</div>
         </div>
       </div>
     </div>
@@ -376,7 +380,7 @@
           </div>
           <div class="r">
             <div class="k" data-en="Focus" data-kr="분야">Focus</div>
-            <div class="v" data-en="Brand Operations" data-kr="브랜드 운영">Brand Operations</div>
+            <div class="v" data-en="Brand Operations · Retail Channel Entry" data-kr="브랜드 운영 · 유통채널 입점 전문">Brand Operations · Retail Channel Entry</div>
           </div>
         </div>
       </div>
