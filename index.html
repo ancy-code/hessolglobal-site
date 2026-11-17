@@ -204,11 +204,12 @@
 
   .contact-address{
     display:grid;grid-template-columns:clamp(96px,13vw,150px) minmax(0,1fr);
-    gap:clamp(16px,2.6vw,30px);align-items:start;
+    gap:clamp(16px,2.6vw,30px);align-items:baseline;
     margin-top:clamp(32px,4vw,48px);padding-top:clamp(22px,2.8vw,32px);border-top:1px solid var(--line);
   }
-  .contact-address .k{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--wood);padding-top:8px}
-  .contact-address .v{font-family:var(--serif);font-size:clamp(17px,1.5vw,21px);line-height:1.65;letter-spacing:.005em;color:var(--ink)}
+  .contact-address .k{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--wood);padding-top:0}
+  .contact-address .v{font-family:var(--sans);font-size:12.5px;line-height:1.6;letter-spacing:.01em;color:var(--sub);font-weight:300}
+  html[lang="ko"] .contact-address .v{font-size:12.5px;letter-spacing:0}
   .form-status{margin-top:14px;font-size:12px;color:var(--walnut);min-height:18px}
   .form-status[data-msg="error"]{
     margin-top:16px;padding:14px 18px;max-width:52ch;
