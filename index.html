@@ -237,28 +237,10 @@
   html[lang="ko"] .sent-panel .sent-h{font-size:clamp(25px,3vw,37px);line-height:1.34;letter-spacing:-.024em}
   .sent-panel .sent-h:focus{outline:none}
   .sent-p{margin-top:clamp(15px,1.7vw,19px);font-size:14.5px;line-height:1.82;color:var(--sub);max-width:48ch}
-  .sent-meta{margin-top:clamp(24px,2.8vw,32px);border-top:1px solid var(--line-soft)}
-  .sent-meta .r{display:grid;grid-template-columns:clamp(96px,13vw,150px) minmax(0,1fr);gap:clamp(16px,2.6vw,30px);padding:12px 0;border-bottom:1px solid var(--line-soft)}
-  .sent-meta .k{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--wood);padding-top:3px}
-  html[lang="ko"] .sent-meta .k{letter-spacing:.1em}
-  .sent-meta .v{font-size:13.5px;line-height:1.6;color:var(--ink);word-break:break-word}
-  .sent-again{
-    margin-top:0;display:inline-flex;align-items:center;gap:12px;
-    font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);
-    border-bottom:1px solid var(--line);padding:0 0 9px;transition:border-color .35s var(--ease);
-  }
-  .sent-again:hover{border-color:var(--ink);color:var(--ink)}
-  .sent-again .ar{transition:transform .35s var(--ease)}
-  .sent-again-wrap{padding:clamp(22px,2.6vw,30px) 0 4px}
-  .sent-again:hover .ar{transform:translateX(4px)}
   @keyframes panelIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
   .sent-panel.is-in,.form-view.is-back{animation:panelIn .55s var(--ease) both}
   @media (prefers-reduced-motion:reduce){
     .sent-panel.is-in,.form-view.is-back{animation:none}
-  }
-  @media (max-width:760px){
-    .sent-meta .r{grid-template-columns:1fr;gap:3px;padding:11px 0}
-    .sent-meta .k{padding-top:0}
   }
 
   /* footer */
@@ -498,19 +480,6 @@
             <span class="label" data-en="Message delivered" data-kr="Message delivered">Message delivered</span>
             <h3 class="sent-h" id="sent-title" tabindex="-1" data-en="A new connection begins." data-kr="새로운 연결이 시작됐어요.">A new connection begins.</h3>
             <p class="sent-p" data-en="We&rsquo;ve received your message and will reply shortly." data-kr="남겨주신 이야기 확인 후 곧 답장드리겠습니다.">We&rsquo;ve received your message and will reply shortly.</p>
-            <div class="sent-meta">
-              <div class="r">
-                <div class="k" data-en="Received" data-kr="접수 시각">Received</div>
-                <div class="v" id="sent-time">—</div>
-              </div>
-              <div class="r">
-                <div class="k" data-en="Reply to" data-kr="회신 주소">Reply to</div>
-                <div class="v" id="sent-email">—</div>
-              </div>
-            </div>
-            <div class="sent-again-wrap">
-              <button type="button" class="sent-again" id="sent-again"><span data-en="Send another message" data-kr="다른 문의 남기기">Send another message</span><span class="ar">→</span></button>
-            </div>
           </div>
         </div>
 
@@ -547,7 +516,6 @@
 
   /* ---- language ---- */
   var lang = 'en';
-  var paintSent = null;
   var MSG = {
     sending: { en: 'Sending…', kr: '전송 중…' },
     error:   { en: 'Your message did not go through. Please try again in a moment, or write to <a href="mailto:ancy@hessolglobal.com">ancy@hessolglobal.com</a>.', kr: '전송이 완료되지 않았어요. 잠시 후 다시 보내 주시거나 <a href="mailto:ancy@hessolglobal.com">ancy@hessolglobal.com</a>으로 직접 연락 주세요.' },
@@ -575,7 +543,6 @@
     });
     var stx = D.getElementById('form-status');
     if (stx && MSG[stx.getAttribute('data-msg')]) stx.innerHTML = MSG[stx.getAttribute('data-msg')][l];
-    if (paintSent) paintSent();
     try { localStorage.setItem('hg-lang', l); } catch(e){}
   }
   D.querySelectorAll('[data-lang]').forEach(function(b){
@@ -630,26 +597,13 @@
     var formView = D.getElementById('form-view');
     var sentPanel = D.getElementById('sent-panel');
     var sentTitle = D.getElementById('sent-title');
-    var sentTime = D.getElementById('sent-time');
-    var sentEmail = D.getElementById('sent-email');
-    var againBtn = D.getElementById('sent-again');
-    var sending = false, sentAt = null;
+    var sending = false;
 
     var setStatus = function(key){
       if (!key){ st.removeAttribute('data-msg'); st.innerHTML = ''; return; }
       st.setAttribute('data-msg', key);
       st.innerHTML = MSG[key][lang];
     };
-
-    var fmtTime = function(d){
-      if (!d) return '—';
-      var p2 = function(n){ return (n < 10 ? '0' : '') + n; };
-      var dd = p2(d.getDate()), mm = p2(d.getMonth() + 1), hh = p2(d.getHours()), mi = p2(d.getMinutes());
-      if (lang === 'kr') return d.getFullYear() + '. ' + mm + '. ' + dd + '. ' + hh + ':' + mi;
-      var M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      return dd + ' ' + M[d.getMonth()] + ' ' + d.getFullYear() + ' · ' + hh + ':' + mi;
-    };
-    paintSent = function(){ if (sentTime) sentTime.textContent = fmtTime(sentAt); };
 
     var setBusy = function(b){
       sending = b;
@@ -668,10 +622,7 @@
       }
     };
 
-    var showSent = function(email){
-      sentAt = new Date();
-      if (sentEmail) sentEmail.textContent = email || '—';
-      paintSent();
+    var showSent = function(){
       setStatus(null);
       formView.classList.add('is-out');
       window.setTimeout(function(){
@@ -728,7 +679,7 @@
       }).then(function(){
         if (timer) window.clearTimeout(timer);
         setBusy(false);
-        showSent(email);
+        showSent();
       }).catch(function(){
         if (timer) window.clearTimeout(timer);
         setBusy(false);
@@ -736,20 +687,6 @@
       });
     });
 
-    if (againBtn){
-      againBtn.addEventListener('click', function(){
-        sentPanel.hidden = true;
-        sentPanel.classList.remove('is-in');
-        formView.hidden = false;
-        formView.classList.remove('is-back');
-        void formView.offsetWidth;
-        formView.classList.add('is-back');
-        setStatus(null);
-        var first = f.querySelector('input, textarea');
-        if (first) { try { first.focus({ preventScroll: true }); } catch(err){ first.focus(); } }
-        scrollTo(formView);
-      });
-    }
   }
 })();
 </script>
