@@ -210,8 +210,56 @@
   .contact-address .k{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--wood);padding-top:8px}
   .contact-address .v{font-family:var(--serif);font-size:clamp(17px,1.5vw,21px);line-height:1.65;letter-spacing:.005em;color:var(--ink)}
   .form-status{margin-top:14px;font-size:12px;color:var(--walnut);min-height:18px}
-  .form-status[data-msg="error"]{color:#a1543f}
-  .form-foot .btn[disabled]{opacity:.5;pointer-events:none}
+  .form-status[data-msg="error"]{
+    margin-top:16px;padding:14px 18px;max-width:52ch;
+    background:rgba(161,84,63,.055);border-left:2px solid #a1543f;
+    color:#8f4a37;font-size:12.5px;line-height:1.75;
+  }
+  .form-status[data-msg="error"] a{color:#8f4a37;border-bottom:1px solid rgba(143,74,55,.42);transition:border-color .3s var(--ease)}
+  .form-status[data-msg="error"] a:hover{border-color:#8f4a37}
+  .form-foot .btn[disabled]{opacity:.62;pointer-events:none}
+  .form-foot .btn[aria-busy="true"]{background:var(--walnut)}
+  .btn .lbl-busy{display:none}
+  .btn[aria-busy="true"] .lbl{display:none}
+  .btn[aria-busy="true"] .lbl-busy{display:inline}
+  .btn[aria-busy="true"] .ar{display:none}
+
+  /* form stage — form ⇄ received panel */
+  .form-stage{position:relative}
+  [hidden]{display:none!important}
+  .form-view{transition:opacity .4s var(--ease),transform .4s var(--ease)}
+  .form-view.is-out{opacity:0;transform:translateY(-10px);pointer-events:none}
+  .sent-panel{border-top:1px solid var(--line);padding-top:clamp(26px,3.2vw,38px)}
+  .sent-panel .sent-h{
+    font-family:var(--serif);font-weight:300;font-size:clamp(29px,3.5vw,44px);
+    line-height:1.16;letter-spacing:-.012em;margin:clamp(18px,2.2vw,26px) 0 0;
+  }
+  html[lang="ko"] .sent-panel .sent-h{font-size:clamp(25px,3vw,37px);line-height:1.34;letter-spacing:-.024em}
+  .sent-panel .sent-h:focus{outline:none}
+  .sent-p{margin-top:clamp(15px,1.7vw,19px);font-size:14.5px;line-height:1.82;color:var(--sub);max-width:48ch}
+  .sent-meta{margin-top:clamp(24px,2.8vw,32px);border-top:1px solid var(--line-soft)}
+  .sent-meta .r{display:grid;grid-template-columns:clamp(96px,13vw,150px) minmax(0,1fr);gap:clamp(16px,2.6vw,30px);padding:12px 0;border-bottom:1px solid var(--line-soft)}
+  .sent-meta .k{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--wood);padding-top:3px}
+  html[lang="ko"] .sent-meta .k{letter-spacing:.1em}
+  .sent-meta .v{font-size:13.5px;line-height:1.6;color:var(--ink);word-break:break-word}
+  .sent-again{
+    margin-top:0;display:inline-flex;align-items:center;gap:12px;
+    font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);
+    border-bottom:1px solid var(--line);padding:0 0 9px;transition:border-color .35s var(--ease);
+  }
+  .sent-again:hover{border-color:var(--ink);color:var(--ink)}
+  .sent-again .ar{transition:transform .35s var(--ease)}
+  .sent-again-wrap{padding:clamp(22px,2.6vw,30px) 0 4px}
+  .sent-again:hover .ar{transform:translateX(4px)}
+  @keyframes panelIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .sent-panel.is-in,.form-view.is-back{animation:panelIn .55s var(--ease) both}
+  @media (prefers-reduced-motion:reduce){
+    .sent-panel.is-in,.form-view.is-back{animation:none}
+  }
+  @media (max-width:760px){
+    .sent-meta .r{grid-template-columns:1fr;gap:3px;padding:11px 0}
+    .sent-meta .k{padding-top:0}
+  }
 
   /* footer */
   footer{border-top:1px solid var(--line);padding:clamp(32px,4.2vw,48px) 0 38px}
@@ -400,7 +448,8 @@
       </div>
 
       <div class="contact-body">
-        <div data-reveal>
+        <div data-reveal class="form-stage">
+          <div class="form-view" id="form-view">
           <form id="inquiry" novalidate>
             <div class="f-row">
               <div class="f">
@@ -438,10 +487,31 @@
             </div>
             <div class="form-foot">
               <p class="form-note" data-en="Your message will be delivered directly to our team." data-kr="작성하신 내용은 메일 앱 없이 바로 담당자에게 전달됩니다.">Your message will be delivered directly to our team.</p>
-              <button class="btn" type="submit"><span data-en="Send inquiry" data-kr="문의 보내기">Send inquiry</span><span class="ar">→</span></button>
+              <button class="btn" type="submit" aria-busy="false"><span class="lbl" data-en="Send inquiry" data-kr="문의 보내기">Send inquiry</span><span class="lbl-busy" aria-hidden="true" data-en="Sending…" data-kr="전송 중…">Sending…</span><span class="ar">→</span></button>
             </div>
             <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
           </form>
+          </div>
+
+          <!-- received panel — shown in place of the form after a successful send -->
+          <div class="sent-panel" id="sent-panel" role="status" aria-live="polite" hidden>
+            <span class="label" data-en="Message delivered" data-kr="Message delivered">Message delivered</span>
+            <h3 class="sent-h" id="sent-title" tabindex="-1" data-en="A new connection begins." data-kr="새로운 연결이 시작됐어요.">A new connection begins.</h3>
+            <p class="sent-p" data-en="We&rsquo;ve received your message and will reply shortly." data-kr="남겨주신 이야기 확인 후 곧 답장드리겠습니다.">We&rsquo;ve received your message and will reply shortly.</p>
+            <div class="sent-meta">
+              <div class="r">
+                <div class="k" data-en="Received" data-kr="접수 시각">Received</div>
+                <div class="v" id="sent-time">—</div>
+              </div>
+              <div class="r">
+                <div class="k" data-en="Reply to" data-kr="회신 주소">Reply to</div>
+                <div class="v" id="sent-email">—</div>
+              </div>
+            </div>
+            <div class="sent-again-wrap">
+              <button type="button" class="sent-again" id="sent-again"><span data-en="Send another message" data-kr="다른 문의 남기기">Send another message</span><span class="ar">→</span></button>
+            </div>
+          </div>
         </div>
 
         <div class="contact-address" data-reveal>
@@ -477,10 +547,10 @@
 
   /* ---- language ---- */
   var lang = 'en';
+  var paintSent = null;
   var MSG = {
-    sending: { en: 'Sending...', kr: '전송 중...' },
-    sent:    { en: 'Thank you. Your inquiry has been sent.', kr: '문의가 정상적으로 접수되었습니다.' },
-    error:   { en: 'Your message could not be sent. Please write to hessol@hessolglobal.com directly.', kr: '전송에 실패했습니다. hessol@hessolglobal.com으로 직접 문의해 주세요.' },
+    sending: { en: 'Sending…', kr: '전송 중…' },
+    error:   { en: 'Your message did not go through. Please try again in a moment, or write to <a href="mailto:ancy@hessolglobal.com">ancy@hessolglobal.com</a>.', kr: '전송이 완료되지 않았어요. 잠시 후 다시 보내 주시거나 <a href="mailto:ancy@hessolglobal.com">ancy@hessolglobal.com</a>으로 직접 연락 주세요.' },
     need:    { en: 'Please share your inquiry.', kr: '문의하실 내용을 적어 주세요.' },
     invalid: { en: 'Please enter a valid email and your inquiry.', kr: '이메일과 문의 내용을 입력해 주세요.' }
   };
@@ -504,7 +574,8 @@
       if (b.hasAttribute('aria-pressed')) b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
     var stx = D.getElementById('form-status');
-    if (stx && MSG[stx.getAttribute('data-msg')]) stx.textContent = MSG[stx.getAttribute('data-msg')][l];
+    if (stx && MSG[stx.getAttribute('data-msg')]) stx.innerHTML = MSG[stx.getAttribute('data-msg')][l];
+    if (paintSent) paintSent();
     try { localStorage.setItem('hg-lang', l); } catch(e){}
   }
   D.querySelectorAll('[data-lang]').forEach(function(b){
@@ -556,12 +627,71 @@
   var f = D.getElementById('inquiry'), st = D.getElementById('form-status');
   if (f && st){
     var sendBtn = f.querySelector('button[type="submit"]');
+    var formView = D.getElementById('form-view');
+    var sentPanel = D.getElementById('sent-panel');
+    var sentTitle = D.getElementById('sent-title');
+    var sentTime = D.getElementById('sent-time');
+    var sentEmail = D.getElementById('sent-email');
+    var againBtn = D.getElementById('sent-again');
+    var sending = false, sentAt = null;
+
     var setStatus = function(key){
+      if (!key){ st.removeAttribute('data-msg'); st.innerHTML = ''; return; }
       st.setAttribute('data-msg', key);
-      st.textContent = MSG[key][lang];
+      st.innerHTML = MSG[key][lang];
     };
+
+    var fmtTime = function(d){
+      if (!d) return '—';
+      var p2 = function(n){ return (n < 10 ? '0' : '') + n; };
+      var dd = p2(d.getDate()), mm = p2(d.getMonth() + 1), hh = p2(d.getHours()), mi = p2(d.getMinutes());
+      if (lang === 'kr') return d.getFullYear() + '. ' + mm + '. ' + dd + '. ' + hh + ':' + mi;
+      var M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      return dd + ' ' + M[d.getMonth()] + ' ' + d.getFullYear() + ' · ' + hh + ':' + mi;
+    };
+    paintSent = function(){ if (sentTime) sentTime.textContent = fmtTime(sentAt); };
+
+    var setBusy = function(b){
+      sending = b;
+      if (sendBtn){
+        sendBtn.disabled = b;
+        sendBtn.setAttribute('aria-busy', b ? 'true' : 'false');
+      }
+      f.setAttribute('aria-busy', b ? 'true' : 'false');
+    };
+
+    var scrollTo = function(el){
+      if (!el) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < 96 || r.bottom > window.innerHeight - 24){
+        try { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch(e){ el.scrollIntoView(); }
+      }
+    };
+
+    var showSent = function(email){
+      sentAt = new Date();
+      if (sentEmail) sentEmail.textContent = email || '—';
+      paintSent();
+      setStatus(null);
+      formView.classList.add('is-out');
+      window.setTimeout(function(){
+        formView.hidden = true;
+        formView.classList.remove('is-out');
+        f.reset();
+        sentPanel.hidden = false;
+        sentPanel.classList.remove('is-in');
+        void sentPanel.offsetWidth;
+        sentPanel.classList.add('is-in');
+        if (sentTitle){
+          try { sentTitle.focus({ preventScroll: true }); } catch(err){ sentTitle.focus(); }
+        }
+        scrollTo(sentPanel);
+      }, 380);
+    };
+
     f.addEventListener('submit', function(e){
       e.preventDefault();
+      if (sending) return;
       var v = function(n){ var el = f.elements[n]; return el ? el.value.trim() : ''; };
       var name = v('name'), email = v('email'), message = v('message'), company = v('company');
       var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
@@ -569,8 +699,12 @@
       if (!emailOk){ setStatus('invalid'); f.elements.email.focus(); return; }
       var subject = (lang === 'kr' ? '[HESSOL GLOBAL] 문의 — ' : '[HESSOL GLOBAL] Inquiry — ') +
                     (company || name || (lang === 'kr' ? '홈페이지' : 'Website'));
-      setStatus('sending');
-      if (sendBtn) sendBtn.disabled = true;
+      setStatus(null);
+      setBusy(true);
+
+      var ctrl = (typeof AbortController === 'function') ? new AbortController() : null;
+      var timer = ctrl ? window.setTimeout(function(){ try { ctrl.abort(); } catch(err){} }, 22000) : null;
+
       fetch('https://formsubmit.co/ajax/ancy@hessolglobal.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -585,20 +719,37 @@
           _subject: subject,
           _template: 'table',
           _captcha: 'false'
-        })
+        }),
+        signal: ctrl ? ctrl.signal : undefined
       }).then(function(res){
         return res.json().catch(function(){ return {}; }).then(function(data){
           if (!res.ok || !(data.success === 'true' || data.success === true)) throw new Error('send_failed');
         });
       }).then(function(){
-        setStatus('sent');
-        f.reset();
+        if (timer) window.clearTimeout(timer);
+        setBusy(false);
+        showSent(email);
       }).catch(function(){
+        if (timer) window.clearTimeout(timer);
+        setBusy(false);
         setStatus('error');
-      }).then(function(){
-        if (sendBtn) sendBtn.disabled = false;
       });
     });
+
+    if (againBtn){
+      againBtn.addEventListener('click', function(){
+        sentPanel.hidden = true;
+        sentPanel.classList.remove('is-in');
+        formView.hidden = false;
+        formView.classList.remove('is-back');
+        void formView.offsetWidth;
+        formView.classList.add('is-back');
+        setStatus(null);
+        var first = f.querySelector('input, textarea');
+        if (first) { try { first.focus({ preventScroll: true }); } catch(err){ first.focus(); } }
+        scrollTo(formView);
+      });
+    }
   }
 })();
 </script>
